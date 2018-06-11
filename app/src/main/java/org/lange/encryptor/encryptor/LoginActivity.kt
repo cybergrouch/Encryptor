@@ -251,10 +251,9 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                 return false
             }
 
-            var mapValue = DUMMY_CREDENTIALS.map { it.split(":") }
-            val validEmail = mapValue.firstOrNull { it[0] == mEmail }
-            val validEmailAndPassword = validEmail?.let { it[1] == mPassword } ?: false
-            return validEmailAndPassword
+            return DUMMY_CREDENTIALS.map { it.split(":") }
+                    .firstOrNull { it[0] == mEmail }
+                    ?.let { it[1] == mPassword } ?: false
         }
 
         override fun onPostExecute(success: Boolean?) {
